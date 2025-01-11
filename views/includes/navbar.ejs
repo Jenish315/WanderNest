@@ -1,0 +1,205 @@
+<style>
+  .btn-search{
+    background-color: #fe424d;
+    color: white;
+    border-radius: 25px;
+    padding: 0 1rem 0 1rem;
+  }
+  .btn-search:hover{
+    background-color: #fe424d;
+    color: white;
+  }
+  .btn-search i{
+    display: inline;
+    margin-right: 0.5rem;
+  }
+  .search-inp{
+    border-radius: 25px;
+    padding: 0.5rem 3rem 0.5rem 3rem;
+    font-size: 1rem;
+  }
+
+
+   /* Base Styles */
+   .btn-search {
+    background-color: #fe424d;
+    color: white;
+    border-radius: 25px;
+    padding: 0 1rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-search:hover {
+    background-color: #fe424d;
+    color: white;
+  }
+
+  .btn-search i {
+    display: inline;
+    margin-right: 0.5rem;
+  }
+
+  .search-inp {
+    border-radius: 25px;
+    padding: 0.5rem 3rem;
+    font-size: 1rem;
+  }
+
+  .navbar-nav a {
+    font-weight: 500;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .search-inp {
+      width: 100%;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .btn-search {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    /* Navbar Items */
+    .navbar-nav .nav-link {
+      padding: 0.5rem 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    /* Center Navbar Brand */
+    .navbar-brand {
+      margin-right: auto;
+    }
+
+    /* Collapse Items to Stack */
+    .navbar-collapse {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 576px) {
+    /* Smaller Font and Padding for Search */
+    .search-inp {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.85rem;
+    }
+
+    /* Smaller Button Size */
+    .btn-search {
+      font-size: 0.85rem;
+      padding: 0.3rem 0.6rem;
+    }
+
+    /* Stack Navbar Items for Small Devices */
+    .navbar-nav {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    /* Reduce Padding for Navbar Links */
+    .navbar-nav .nav-link {
+      padding: 0.5rem 0;
+    }
+  }
+
+  .navbar {
+    background-color: #ffffff;
+    z-index: 1050; /* Ensures navbar stays on top */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Navbar Toggle Button */
+  .navbar-toggler {
+    border: none;
+    outline: none;
+  }
+
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%288, 8, 8, 0.8%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+
+  /* Navbar Collapse */
+  .navbar-collapse {
+    transition: height 0.3s ease;
+  }
+
+  /* Navbar Link Styling */
+  .navbar-nav .nav-link {
+    color: #333;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    text-align: center;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    /* Navbar Links: Stack in a Column */
+    .navbar-collapse {
+      background-color: #ffffff;
+      padding-top: 1rem;
+    }
+
+    /* Centered Navbar Items */
+    .navbar-nav .nav-link {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+      color: #333;
+      text-align: center;
+    }
+
+    /* Ensure Links Display on Separate Lines */
+    .navbar-nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* Include Sign In/Sign Up and Sign Out in Dropdown */
+    .navbar-nav .auth-link {
+      font-weight: 700;
+      color: #fe424d;
+    }
+  }
+
+</style>
+
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listings">Explore</a>
+      </div>
+
+      <div class="navbar-nav ms-auto">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2 search-inp" type="search" placeholder="Search Destination">
+          <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+        </form>    
+      </div>
+
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/listings/new">Add New Listing</a>
+        <% if(!currUser) {%>
+          <a class="nav-link" href="/login"><b>Login</b></a>
+          <a class="nav-link" href="/signup"><b>Sign Up</b></a>
+        <% } %>
+        <% if(currUser) {%>
+           <a class="nav-link" href="/logout"><b>Logout</b></a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>
